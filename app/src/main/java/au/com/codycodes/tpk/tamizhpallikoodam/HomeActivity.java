@@ -1,5 +1,6 @@
 package au.com.codycodes.tpk.tamizhpallikoodam;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,6 +42,22 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // Find the View that shows the colors category
+        TextView colors = (TextView) findViewById(R.id.colors);
+
+        // Set a click listener on that View
+        colors.setOnClickListener(new View.OnClickListener() {
+            // The code in this method will be executed when the colors category is clicked on.
+            @Override
+            public void onClick(View view) {
+                // Create a new intent to open the {@link ColorsActivity}
+                Intent colorsIntent = new Intent(HomeActivity.this, ColorsActivity.class);
+
+                // Start the new activity
+                startActivity(colorsIntent);
+            }
+        });
     }
 
     @Override

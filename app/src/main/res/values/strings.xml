@@ -3,8 +3,8 @@
     <string name="title_activity_home">Main Menu</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Tamizh Pallikoodam Inc.</string>
+    <string name="nav_header_subtitle">www.tamizhpallikoodam.org.au/</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 </resources>

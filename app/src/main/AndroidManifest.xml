@@ -26,6 +26,9 @@
             android:name=".ColorsActivity"
             android:label="@string/category_colors" />
 
+        <activity
+            android:name=".VocabularyActivity"/>
+
     </application>
 
 </manifest>

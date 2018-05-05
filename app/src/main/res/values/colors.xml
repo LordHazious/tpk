@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <!-- Background color for app -->
-    <color name="tan_background">#edede1</color>
+    <color name="tamil_cream">#edede1</color>
     <!-- Background color for the numbers category -->
     <color name="category_numbers">#5a4489</color>
 
@@ -19,5 +19,9 @@
 
     <!-- Background color for the splash screen -->
     <color name="background_splash">#edede1</color>
+
+    <!-- Tamil red color -->
+    <color name="tamil_red">#b74949</color>
+
 
 </resources>

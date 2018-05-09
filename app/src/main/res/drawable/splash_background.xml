@@ -4,9 +4,7 @@
     <item android:drawable="@color/colorPrimary" />
 
     <item>
-        <bitmap android:src="@drawable/tpk_splash_logo"
-            android:gravity="center" />
-
+        <bitmap android:src="@drawable/tpk_splash_logo" android:gravity="center" />
     </item>
 
 </layer-list>

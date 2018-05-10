@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import java.io.IOException;
+import java.sql.SQLException;
 import android.widget.Toast;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -75,7 +77,29 @@ public class ColorsActivity extends AppCompatActivity {
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         // Create a list of words
-        final ArrayList<Word> words = new ArrayList<Word>();
+        final ArrayList<Word> words = new ArrayList<>();
+
+        DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
+
+        try {
+
+            dbHelper.createDataBase();
+
+        } catch (IOException ioe) {
+
+            Toast.makeText(this, ioe.getMessage(), Toast.LENGTH_LONG);
+
+        }
+
+        try {
+
+            dbHelper.openDataBase();
+
+        }catch(SQLException sqle){
+
+            Toast.makeText(this, sqle.getMessage(), Toast.LENGTH_LONG);
+
+        }
 
         try {
             String DB_NAME = "tpk.db";

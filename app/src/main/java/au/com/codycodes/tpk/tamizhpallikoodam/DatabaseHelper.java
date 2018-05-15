@@ -108,8 +108,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             addWord(new Word("gray", "சாம்பல்", R.drawable.color_gray, R.raw.colors_gray, "Colors"));
             addWord(new Word("black", "கருப்பு", R.drawable.color_black, R.raw.colors_black, "Colors"));
             addWord(new Word("red", "சிவப்பு", R.drawable.color_red, R.raw.colors_red, "Colors"));
-            addWord(new Word("blue", "நீலமான", R.drawable.color_blue, R.raw.colors_white, "Colors"));
-            addWord(new Word("yellow", "மஞ்சள்", R.drawable.color_yellow, R.raw.colors_white, "Colors"));
+            addWord(new Word("blue", "நீலமான", R.drawable.color_blue, R.raw.colors_blue, "Colors"));
+            addWord(new Word("yellow", "மஞ்சள்", R.drawable.color_yellow, R.raw.colors_yellow, "Colors"));
             addWord(new Word("green", "பச்சை", R.drawable.color_green, R.raw.colors_green, "Colors"));
             addWord(new Word("brown", "பழுப்பு", R.drawable.color_brown, R.raw.colors_brown, "Colors"));
 

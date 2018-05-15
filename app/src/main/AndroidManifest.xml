@@ -23,8 +23,7 @@
         </activity>
 
         <activity
-            android:name=".ColorsActivity"
-            android:label="@string/category_colors" />
+            android:name=".LearnActivity" />
 
         <activity
             android:name=".VocabularyActivity"/>

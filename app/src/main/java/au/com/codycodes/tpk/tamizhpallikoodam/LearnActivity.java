@@ -9,11 +9,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.content.Intent;
 
 
 import java.util.ArrayList;
 
-public class ColorsActivity extends AppCompatActivity {
+public class LearnActivity extends AppCompatActivity {
 
     /** Handles playback of all the sound files */
     private MediaPlayer mMediaPlayer;
@@ -67,6 +68,9 @@ public class ColorsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+        Intent myIntent = getIntent();
+        String category = myIntent.getStringExtra("category");
+
         // Create and setup the {@link AudioManager} to request audio focus
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
@@ -84,7 +88,7 @@ public class ColorsActivity extends AppCompatActivity {
         db.addWord(new Word("brown", "பழுப்பு", R.drawable.color_brown, R.raw.color_brown, "Colors"));
         */
 
-        final ArrayList<Word> words = db.getWords("Colors");
+        final ArrayList<Word> words = db.getWords(category);
 
         // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
         // adapter knows how to create list items for each item in the list.
@@ -121,7 +125,7 @@ public class ColorsActivity extends AppCompatActivity {
 
                     // Create and setup the {@link MediaPlayer} for the audio resource associated
                     // with the current word
-                    mMediaPlayer = MediaPlayer.create(ColorsActivity.this, word.getAudioResourceId());
+                    mMediaPlayer = MediaPlayer.create(LearnActivity.this, word.getAudioResourceId());
 
                     // Start the audio file
                     mMediaPlayer.start();

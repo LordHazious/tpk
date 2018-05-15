@@ -13,14 +13,16 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Intent intent = new Intent(this, HomeActivity.class);
-        //startActivity(intent);
-        //finish();
+
+        /* Populate Database */
+        DatabaseHelper db = new DatabaseHelper(this);
+        db.populateWords();
+
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(SplashActivity.this,HomeActivity.class);
+                Intent mainIntent = new Intent(SplashActivity.this, HomeActivity.class);
                 SplashActivity.this.startActivity(mainIntent);
                 SplashActivity.this.finish();
             }

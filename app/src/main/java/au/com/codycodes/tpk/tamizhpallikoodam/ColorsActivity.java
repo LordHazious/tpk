@@ -2,7 +2,6 @@ package au.com.codycodes.tpk.tamizhpallikoodam;
 
 
 import android.content.Context;
-import android.database.sqlite.SQLiteException;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import java.io.IOException;
-import java.sql.SQLException;
-import android.widget.Toast;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 
 import java.util.ArrayList;
@@ -76,61 +70,21 @@ public class ColorsActivity extends AppCompatActivity {
         // Create and setup the {@link AudioManager} to request audio focus
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
-        // Create a list of words
-        final ArrayList<Word> words = new ArrayList<>();
-
-        DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
-
-        try {
-
-            dbHelper.createDataBase();
-
-        } catch (IOException ioe) {
-
-            Toast.makeText(this, ioe.getMessage(), Toast.LENGTH_LONG);
-
-        }
-
-        try {
-
-            dbHelper.openDataBase();
-
-        }catch(SQLException sqle){
-
-            Toast.makeText(this, sqle.getMessage(), Toast.LENGTH_LONG);
-
-        }
-
-        try {
-            String DB_NAME = "tpk.db";
-            String DB_PATH = "/data/data/" + BuildConfig.APPLICATION_ID + "/databases/";
-            SQLiteDatabase db = SQLiteDatabase.openDatabase(DB_PATH + DB_NAME, null, SQLiteDatabase.OPEN_READONLY);
-            Cursor c = db.rawQuery("SELECT * FROM words", null);
-            try {
-                if (c != null ) {
-                    if  (c.moveToFirst()) {
-                        do {
-                            words.add(new Word(c.getString(c.getColumnIndex("defaultTranslation")), c.getString(c.getColumnIndex("tamilTranslation")),c.getColumnIndex("imageResourceId"),c.getColumnIndex("audioResourceId")));
-                        }while (c.moveToNext());
-                    }
-                }
-            } finally {
-                c.close();
-            }
-        }catch(SQLiteException e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG);
-        }
+        DatabaseHelper db = new DatabaseHelper(this);
 
         /*
-        words.add(new Word("white", "வெள்ளை", R.drawable.color_white, R.raw.color_white));
-        words.add(new Word("gray", "சாம்பல்", R.drawable.color_gray, R.raw.color_gray));
-        words.add(new Word("black", "கருப்பு", R.drawable.color_black, R.raw.color_black));
-        words.add(new Word("red", "சிவப்பு", R.drawable.color_red, R.raw.color_red));
-        words.add(new Word("blue", "நீலமான", R.drawable.color_blue, R.raw.color_white));
-        words.add(new Word("yellow", "மஞ்சள்", R.drawable.color_yellow, R.raw.color_white));
-        words.add(new Word("green", "பச்சை", R.drawable.color_green, R.raw.color_green));
-        words.add(new Word("brown", "பழுப்பு", R.drawable.color_brown, R.raw.color_brown));
+        // Colors //
+        db.addWord(new Word("white", "வெள்ளை", R.drawable.color_white, R.raw.color_white, "Colors"));
+        db.addWord(new Word("gray", "சாம்பல்", R.drawable.color_gray, R.raw.color_gray, "Colors"));
+        db.addWord(new Word("black", "கருப்பு", R.drawable.color_black, R.raw.color_black, "Colors"));
+        db.addWord(new Word("red", "சிவப்பு", R.drawable.color_red, R.raw.color_red, "Colors"));
+        db.addWord(new Word("blue", "நீலமான", R.drawable.color_blue, R.raw.color_white, "Colors"));
+        db.addWord(new Word("yellow", "மஞ்சள்", R.drawable.color_yellow, R.raw.color_white, "Colors"));
+        db.addWord(new Word("green", "பச்சை", R.drawable.color_green, R.raw.color_green, "Colors"));
+        db.addWord(new Word("brown", "பழுப்பு", R.drawable.color_brown, R.raw.color_brown, "Colors"));
         */
+
+        final ArrayList<Word> words = db.getWords("Colors");
 
         // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
         // adapter knows how to create list items for each item in the list.

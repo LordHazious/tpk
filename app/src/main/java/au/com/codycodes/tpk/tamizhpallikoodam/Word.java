@@ -7,83 +7,98 @@ package au.com.codycodes.tpk.tamizhpallikoodam;
 public class Word {
 
     /** Default translation for the word */
-    private String mDefaultTranslation;
+    private String defaultTranslation;
 
     /** Tamil translation for the word */
-    private String mTamilTranslation;
+    private String tamilTranslation;
 
     /** Audio resource ID for the word */
-    private int mAudioResourceId;
+    private int audioResourceId;
 
     /** Image resource ID for the word */
-    private int mImageResourceId = NO_IMAGE_PROVIDED;
+    private int imageResourceId = NO_IMAGE_PROVIDED;
+
+    /** Image resource ID for the word */
+    private String category;
 
     /** Constant value that represents no image was provided for this word */
     private static final int NO_IMAGE_PROVIDED = -1;
 
     /**
      * Create a new Word object.
-     *
-     * @param defaultTranslation is the word in a language that the user is already familiar with
-     *                           (such as English)
+     * @param defaultTranslation is the word in a language that the user is already familiar with (such as English)
      * @param tamilTranslation is the word in the Tamil language
      * @param audioResourceId is the resource ID for the audio file associated with this word
      */
-    public Word(String defaultTranslation, String tamilTranslation, int audioResourceId) {
-        mDefaultTranslation = defaultTranslation;
-        mTamilTranslation = tamilTranslation;
-        mAudioResourceId = audioResourceId;
+    public Word(String defaultTranslation, String tamilTranslation, int audioResourceId, String category) {
+        this.defaultTranslation = defaultTranslation;
+        this.tamilTranslation = tamilTranslation;
+        this.audioResourceId = audioResourceId;
+        this.category = category;
     }
 
     /**
      * Create a new Word object.
-     *
-     * @param defaultTranslation is the word in a language that the user is already familiar with
-     *                           (such as English)
+     * @param defaultTranslation is the word in a language that the user is already familiar with (such as English)
      * @param tamilTranslation is the word in the Miwok language
      * @param imageResourceId is the drawable resource ID for the image associated with the word
      * @param audioResourceId is the resource ID for the audio file associated with this word
+     * @param category is the word category
      */
-    public Word(String defaultTranslation, String tamilTranslation, int imageResourceId,
-                int audioResourceId) {
-        mDefaultTranslation = defaultTranslation;
-        mTamilTranslation = tamilTranslation;
-        mImageResourceId = imageResourceId;
-        mAudioResourceId = audioResourceId;
+    public Word(String defaultTranslation, String tamilTranslation, int imageResourceId, int audioResourceId, String category) {
+        this.defaultTranslation = defaultTranslation;
+        this.tamilTranslation = tamilTranslation;
+        this.imageResourceId = imageResourceId;
+        this.audioResourceId = audioResourceId;
+        this.category = category;
     }
 
     /**
-     * Get the default translation of the word.
+     * Get the Deafult translation of the word.
      */
     public String getDefaultTranslation() {
-        return mDefaultTranslation;
+        return defaultTranslation;
     }
 
     /**
-     * Get the Miwok translation of the word.
+     * Get the Tamil translation of the word.
      */
     public String getTamilTranslation() {
-        return mTamilTranslation;
+        return tamilTranslation;
     }
 
     /**
      * Return the image resource ID of the word.
      */
     public int getImageResourceId() {
-        return mImageResourceId;
+        return imageResourceId;
     }
 
     /**
      * Returns whether or not there is an image for this word.
      */
     public boolean hasImage() {
-        return mImageResourceId != NO_IMAGE_PROVIDED;
+        return imageResourceId != NO_IMAGE_PROVIDED;
     }
 
     /**
      * Return the audio resource ID of the word.
      */
     public int getAudioResourceId() {
-        return mAudioResourceId;
+        return audioResourceId;
+    }
+
+    /**
+     * return the category for the word.
+     */
+    public String getCategory() {
+        return category;
+    }
+
+    /**
+     * Return String of all variables
+     */
+    public String toString() {
+        return "Default Translation: " + defaultTranslation + " Tamil Translation: " + tamilTranslation + " Image Resource id: " + imageResourceId + " Audio Resource id: " + audioResourceId;
     }
 }

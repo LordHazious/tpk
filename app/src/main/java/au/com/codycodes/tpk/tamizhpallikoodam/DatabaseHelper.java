@@ -1,150 +1,119 @@
 package au.com.codycodes.tpk.tamizhpallikoodam;
 
-
+import java.util.ArrayList;
+import android.content.ContentValues;
 import android.content.Context;
-import android.database.sqlite.SQLiteException;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import java.sql.SQLException;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-
+import android.util.Log;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper{
+    // Database Version
+    private static final int DATABASE_VERSION = 1;
+    // Database Name
+    private static final String DATABASE_NAME = "tpk";
 
-    //The Android's default system path of your application database.
-    private static String DB_PATH = "/data/data/au.com.codycodes.tpk.tamizhpallikoodam/databases/";
-
-    private static String DB_NAME = "tpk.db";
-
-    private SQLiteDatabase myDataBase;
-
-    private final Context myContext;
-
-    /**
-     * Constructor
-     * Takes and keeps a reference of the passed context in order to access to the application assets and resources.
-     * @param context
-     */
     public DatabaseHelper(Context context) {
-        super(context, DB_NAME, null, 1);
-        this.myContext = context;
-    }
-
-    /**
-     * Creates a empty database on the system and rewrites it with your own database.
-     * */
-    public void createDataBase() throws IOException{
-
-        boolean dbExist = checkDataBase();
-
-        if(!dbExist){
-            //By calling this method and empty database will be created into the default system path
-            //of your application so we are gonna be able to overwrite that database with our database.
-            this.getReadableDatabase();
-
-            try {
-
-                copyDataBase();
-
-            } catch (IOException e) {
-
-                throw new Error("Error copying database");
-
-            }
-        }
-    }
-
-    /**
-     * Check if the database already exist to avoid re-copying the file each time you open the application.
-     * @return true if it exists, false if it doesn't
-     */
-    private boolean checkDataBase(){
-
-        SQLiteDatabase checkDB = null;
-
-        try{
-            String myPath = DB_PATH + DB_NAME;
-            checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
-
-        }catch(SQLiteException e){
-
-            //database does't exist yet.
-
-        }
-
-        if(checkDB != null){
-
-            checkDB.close();
-
-        }
-
-        return checkDB != null ? true : false;
-    }
-
-    /**
-     * Copies your database from your local assets-folder to the just created empty database in the
-     * system folder, from where it can be accessed and handled.
-     * This is done by transfering bytestream.
-     * */
-    private void copyDataBase() throws IOException{
-
-        //Open your local db as the input stream
-        InputStream myInput = myContext.getAssets().open(DB_NAME);
-
-        // Path to the just created empty db
-        String outFileName = DB_PATH + DB_NAME;
-
-        //Open the empty db as the output stream
-        OutputStream myOutput = new FileOutputStream(outFileName);
-
-        //transfer bytes from the inputfile to the outputfile
-        byte[] buffer = new byte[1024];
-        int length;
-        while ((length = myInput.read(buffer))>0){
-            myOutput.write(buffer, 0, length);
-        }
-
-        //Close the streams
-        myOutput.flush();
-        myOutput.close();
-        myInput.close();
-
-    }
-
-    public void openDataBase() throws SQLException{
-
-        //Open the database
-        String myPath = DB_PATH + DB_NAME;
-        myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
-
-    }
-
-    @Override
-    public synchronized void close() {
-
-        if(myDataBase != null)
-            myDataBase.close();
-
-        super.close();
-
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        // SQL statement to create words table
+        String CREATE_WORDS_TABLE = "CREATE TABLE words ( " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "english TEXT, "+
+                "tamil TEXT, "+
+                "image INTEGER, "+
+                "audio INTEGER, "+
+                "category TEXT )";
 
+        // create words table
+        db.execSQL(CREATE_WORDS_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // Drop older words table if existed
+        db.execSQL("DROP TABLE IF EXISTS words");
 
+        // create fresh words table
+        this.onCreate(db);
     }
 
-    // Add your public helper methods to access and get content from the database.
-    // You could return cursors by doing "return myDataBase.query(....)" so it'd be easy
-    // to you to create adapters for your views.
+    // Words table name
+    private static final String tWords = "words";
 
+    // Words Table Column names
+    private static final String kID = "id";
+    private static final String kEnglish = "english";
+    private static final String kTamil = "tamil";
+    private static final String kImage = "image";
+    private static final String kAudio = "audio";
+    private static final String kCategory = "category";
+
+    private static final String[] columns = {kID,kEnglish,kTamil,kImage,kAudio,kCategory};
+
+    public void addWord(Word word){
+
+        // for logging
+        Log.d("addWord", word.toString());
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(kEnglish, word.getDefaultTranslation()); // get Default Translation
+        values.put(kTamil, word.getTamilTranslation()); // get Tamil Translation
+        values.put(kImage, word.getImageResourceId()); // get Image resource id
+        values.put(kAudio, word.getAudioResourceId()); // get Audio Resource id
+        values.put(kCategory, word.getCategory()); // get word category
+
+        db.insert(tWords,null, values);
+
+        db.close();
+    }
+
+    public ArrayList<Word> getWords(String category){
+        ArrayList<Word> words = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor =
+                db.query(tWords, columns," category = ?", new String[] { String.valueOf(category) },null,null,null,null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                words.add(new Word(cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(3)), Integer.parseInt(cursor.getString(4)), cursor.getString(5)));
+            } while (cursor.moveToNext());
+        }
+
+        db.close();
+
+        return words;
+    }
+
+    public void populateWords() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String sqlCount = "SELECT count(*) FROM words";
+        Cursor cursor = db.rawQuery(sqlCount, null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        if (count == 0) {
+
+            // Colors //
+            addWord(new Word("white", "வெள்ளை", R.drawable.color_white, R.raw.color_white, "Colors"));
+            addWord(new Word("gray", "சாம்பல்", R.drawable.color_gray, R.raw.color_gray, "Colors"));
+            addWord(new Word("black", "கருப்பு", R.drawable.color_black, R.raw.color_black, "Colors"));
+            addWord(new Word("red", "சிவப்பு", R.drawable.color_red, R.raw.color_red, "Colors"));
+            addWord(new Word("blue", "நீலமான", R.drawable.color_blue, R.raw.color_white, "Colors"));
+            addWord(new Word("yellow", "மஞ்சள்", R.drawable.color_yellow, R.raw.color_white, "Colors"));
+            addWord(new Word("green", "பச்சை", R.drawable.color_green, R.raw.color_green, "Colors"));
+            addWord(new Word("brown", "பழுப்பு", R.drawable.color_brown, R.raw.color_brown, "Colors"));
+
+        }
+        db.close();
+    }
 }

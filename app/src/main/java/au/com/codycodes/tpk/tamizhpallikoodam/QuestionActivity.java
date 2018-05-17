@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 import android.widget.RadioGroup;
 import android.widget.RadioButton;
+import android.media.MediaPlayer;
 
 public class QuestionActivity extends AppCompatActivity {
 
@@ -35,16 +36,25 @@ public class QuestionActivity extends AppCompatActivity {
         TextView option4 = findViewById(R.id.option4);
         option4.setText(quiz.getOption4());
 
-        final Button button = findViewById(R.id.submit);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button submit = findViewById(R.id.submit);
+        submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 RadioGroup rg = findViewById(R.id.options);
                 String selectedOption = ((RadioButton)findViewById(rg.getCheckedRadioButtonId())).getText().toString();
-                if(selectedOption == quiz.getAnswer()){
+                if(selectedOption.equals(quiz.getAnswer())){
                     Toast.makeText(getApplicationContext(), "Correct!", Toast.LENGTH_LONG).show();
                 }else{
-                    Toast.makeText(getApplicationContext(), "Incorrect!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Incorrect!: " + quiz.getAnswer(), Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        final Button audio = findViewById(R.id.audio);
+        final MediaPlayer mp = MediaPlayer.create(this, quiz.getAudioResourceId());
+
+        audio.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mp.start();
             }
         });
     }

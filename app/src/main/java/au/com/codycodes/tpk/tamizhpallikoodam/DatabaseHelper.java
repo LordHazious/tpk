@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import java.util.Random;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper{
@@ -81,8 +82,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor =
-                db.query(tWords, columns," category = ?", new String[] { String.valueOf(category) },null,null,null,null);
+        Cursor cursor = db.query(tWords, columns," category = ?", new String[] { String.valueOf(category) },null,null,null,null);
 
         if (cursor.moveToFirst()) {
             do {
@@ -96,15 +96,43 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
     public Quiz getQuiz(){
-        Quiz q = new Quiz("Hello World", "Dog", "I has Codes", "Cat", "Dog", "Bird", "Horse", R.drawable.color_white, R.raw.colors_white);
+        SQLiteDatabase db = this.getReadableDatabase();
 
-        return q;
+        Cursor question = db.rawQuery("SELECT id, english, tamil, image, audio, category " + "FROM words " + "WHERE id >= (abs(random()) % (SELECT max(id) FROM words)) LIMIT 1", null);
+        if (question.moveToFirst()) {
+            Cursor options = db.rawQuery("SELECT DISTINCT english " + "FROM words " + "WHERE id >= (abs(random()) % (SELECT max(id) FROM words)) AND category = ? AND id != ? ORDER BY english LIMIT 0,4", new String [] { question.getString(5), question.getString(0)});
+
+            options.moveToFirst();
+            String option1 = options.getString(0);
+            options.moveToNext();
+            String option2 = options.getString(0);
+            options.moveToNext();
+            String option3 = options.getString(0);
+            options.moveToLast();
+            String option4 = options.getString(0);
+
+            Random r = new Random();
+
+            switch(r.nextInt(4)) {
+                case 0: option1 = question.getString(1); break;
+                case 1: option2 = question.getString(1); break;
+                case 2: option3 = question.getString(1); break;
+                case 3: option4 = question.getString(1); break;
+            }
+
+            options.close();
+
+            Quiz q = new Quiz(question.getString(2), question.getString(1), question.getString(5), option1, option2, option3, option4, Integer.parseInt(question.getString(3)), Integer.parseInt(question.getString(4)));
+            return q;
+        }
+
+        db.close();
+        return null;
     }
 
     public void populateWords() {
         SQLiteDatabase db = this.getWritableDatabase();
-        String sqlCount = "SELECT count(*) FROM words";
-        Cursor cursor = db.rawQuery(sqlCount, null);
+        Cursor cursor = db.rawQuery("SELECT count(*) FROM words", null);
         cursor.moveToFirst();
         int count = cursor.getInt(0);
         if (count == 0) {

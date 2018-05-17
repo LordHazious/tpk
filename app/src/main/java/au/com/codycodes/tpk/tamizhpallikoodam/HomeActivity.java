@@ -60,6 +60,22 @@ public class HomeActivity extends AppCompatActivity
                 startActivity(vocabIntent);
             }
         });
+
+        // Find the View that shows the colors category
+        ImageView game = (ImageView) findViewById(R.id.image_view_game);
+
+        // Set a click listener on that View
+        game.setOnClickListener(new View.OnClickListener() {
+            // The code in this method will be executed when the colors category is clicked on.
+            @Override
+            public void onClick(View view) {
+                // Create a new intent to open the {@link ColorsActivity}
+                Intent gameIntent = new Intent(HomeActivity.this, QuestionActivity.class);
+
+                // Start the new activity
+                startActivity(gameIntent);
+            }
+        });
     }
 
     @Override

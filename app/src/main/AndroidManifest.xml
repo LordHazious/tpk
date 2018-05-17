@@ -12,22 +12,23 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".SplashActivity" android:theme="@style/SplashTheme">
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".LearnActivity" />
+        <activity android:name=".VocabularyActivity" />
         <activity
-            android:name=".LearnActivity" />
-
-        <activity
-            android:name=".VocabularyActivity"/>
-
+            android:name=".QuestionActivity"
+            android:label="@string/title_activity_question"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ResultSplashActivity"></activity>
     </application>
 
 </manifest>

@@ -95,6 +95,12 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return words;
     }
 
+    public Quiz getQuiz(){
+        Quiz q = new Quiz("Hello World", "Dog", "I has Codes", "Cat", "Dog", "Bird", "Horse", R.drawable.color_white, R.raw.colors_white);
+
+        return q;
+    }
+
     public void populateWords() {
         SQLiteDatabase db = this.getWritableDatabase();
         String sqlCount = "SELECT count(*) FROM words";

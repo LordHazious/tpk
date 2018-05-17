@@ -27,4 +27,5 @@
 
     <!-- http://www.tamizhpallikoodam.org.au/ -->
     <string name="tamizhpallikoodam_website">http://www.tamizhpallikoodam.org.au/</string>
+    <string name="title_activity_question">Question</string>
 </resources>

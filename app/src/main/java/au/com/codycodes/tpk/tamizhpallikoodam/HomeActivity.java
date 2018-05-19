@@ -150,12 +150,18 @@ public class HomeActivity extends AppCompatActivity
     }
 
     public void ShowWebPage(View view) {
+
         String url = getString(R.string.tamizhpallikoodam_website);
-        Uri webpage = Uri.parse(url);
-        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
-        if (intent.resolveActivity(getPackageManager()) != null)
-        {
-            startActivity(intent);
-        }
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
+
+        //String url = getString(R.string.tamizhpallikoodam_website);
+        //Uri webpage = Uri.parse(url);
+        //Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        //if (intent.resolveActivity(getPackageManager()) != null)
+        //{
+          //  startActivity(intent);
+        //}
     }
 }

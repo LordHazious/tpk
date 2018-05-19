@@ -107,7 +107,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
         Cursor question = db.rawQuery("SELECT id, english, tamil, image, audio, category " + "FROM words " + "WHERE id >= (abs(random()) % (SELECT max(id) FROM words)) LIMIT 1", null);
         if (question.moveToFirst()) {
-            Cursor options = db.rawQuery("SELECT DISTINCT english " + "FROM words " + "WHERE id >= (abs(random()) % (SELECT max(id) FROM words)) AND category = ? AND id != ? ORDER BY english LIMIT 0,4", new String [] { question.getString(5), question.getString(0)});
+            Cursor options = db.rawQuery("SELECT DISTINCT english " + "FROM words " + "WHERE id >= (abs(random()) % (SELECT COUNT(id) FROM words WHERE category = ? AND id != ?)) AND category = ? AND id != ? ORDER BY english LIMIT 0,4", new String [] { question.getString(5), question.getString(0), question.getString(5), question.getString(0)});
 
             if(options != null && options.moveToFirst()) {
                 option1 = options.getString(0);

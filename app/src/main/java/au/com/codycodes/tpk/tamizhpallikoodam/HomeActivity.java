@@ -17,7 +17,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.ImageView;
-import android.support.v7.widget.CardView;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,7 +47,7 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         // Find the View that shows the colors category
-        CardView vocabulary = (CardView) findViewById(R.id.CardView_vocabulary);
+        CardView vocabulary = findViewById(R.id.CardView_vocabulary);
 
         // Set a click listener on that View
         vocabulary.setOnClickListener(new View.OnClickListener() {

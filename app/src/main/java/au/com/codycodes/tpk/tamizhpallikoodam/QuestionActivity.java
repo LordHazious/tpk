@@ -40,11 +40,15 @@ public class QuestionActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 RadioGroup rg = findViewById(R.id.options);
-                String selectedOption = ((RadioButton)findViewById(rg.getCheckedRadioButtonId())).getText().toString();
-                if(selectedOption.equals(quiz.getAnswer())){
-                    Toast.makeText(getApplicationContext(), "Correct!", Toast.LENGTH_LONG).show();
+                if(rg.getCheckedRadioButtonId() != -1) {
+                    String selectedOption = ((RadioButton)findViewById(rg.getCheckedRadioButtonId())).getText().toString();
+                    if (selectedOption.equals(quiz.getAnswer())) {
+                        Toast.makeText(getApplicationContext(), "Correct!", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Incorrect!: " + quiz.getAnswer(), Toast.LENGTH_LONG).show();
+                    }
                 }else{
-                    Toast.makeText(getApplicationContext(), "Incorrect!: " + quiz.getAnswer(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Please make a selection", Toast.LENGTH_LONG).show();
                 }
             }
         });

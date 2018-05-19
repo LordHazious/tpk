@@ -38,5 +38,8 @@
     <!-- CardView color -->
     <color name="lightgray">#ededed</color>
 
+    <!-- vocabulary text background -->
+    <color name="vocab_text_background">#ededed</color>
+
 
 </resources>

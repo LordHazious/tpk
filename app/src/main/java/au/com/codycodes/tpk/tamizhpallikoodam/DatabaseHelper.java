@@ -172,16 +172,16 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             addWord(new Word("grandfather", "தாத்தா", R.drawable.grandfather, R.raw.family_grand_father, "Family"));
 
             // Phrases //
-            addWord(new Word("Where are you going?", "நீஎங்கேபோகிறாய்?", R.drawable.phrases, R.raw.phrases_where_are_you_going, "Phrases"));
-            addWord(new Word("What is your name?", "உங்கள்பெயர்என்ன", R.drawable.phrases, R.raw.phrases_what_is_your_name, "Phrases"));
-            addWord(new Word("My name is...", "என்பெயர்...", R.drawable.phrases, R.raw.phrases_my_name_is, "Phrases"));
-            addWord(new Word("How are you feeling?", "நீஎப்படிஇருக்கிறாய்?", R.drawable.phrases, R.raw.phrases_how_are_you_feeling, "Phrases"));
-            addWord(new Word("I’m feeling good.", "நான்நன்றாகஇருகிறேன்.", R.drawable.phrases, R.raw.phrases_im_feeling_good, "Phrases"));
-            addWord(new Word("Are you coming?", "நீவருகிறாயா?", R.drawable.phrases, R.raw.phrases_are_you_coming, "Phrases"));
-            addWord(new Word("Yes, I’m coming.", "ஆம், நான்வருகிறேன்.", R.drawable.phrases, R.raw.phrases_yes_im_coming, "Phrases"));
-            addWord(new Word("I’m coming.", "நான்வருகிறேன்.", R.drawable.phrases, R.raw.phrases_im_coming, "Phrases"));
-            addWord(new Word("Let’s go.", "செல்லலாம்.", R.drawable.phrases, R.raw.phrases_lets_go, "Phrases"));
-            addWord(new Word("Come here.", "இங்கேவா.", R.drawable.phrases, R.raw.phrases_come_here, "Phrases"));
+            addWord(new Word("Where are you going?", "நீஎங்கேபோகிறாய்?", R.drawable.empty_image, R.raw.phrases_where_are_you_going, "Phrases"));
+            addWord(new Word("What is your name?", "உங்கள்பெயர்என்ன", R.drawable.empty_image, R.raw.phrases_what_is_your_name, "Phrases"));
+            addWord(new Word("My name is...", "என்பெயர்...", R.drawable.empty_image, R.raw.phrases_my_name_is, "Phrases"));
+            addWord(new Word("How are you feeling?", "நீஎப்படிஇருக்கிறாய்?", R.drawable.empty_image, R.raw.phrases_how_are_you_feeling, "Phrases"));
+            addWord(new Word("I’m feeling good.", "நான்நன்றாகஇருகிறேன்.", R.drawable.empty_image, R.raw.phrases_im_feeling_good, "Phrases"));
+            addWord(new Word("Are you coming?", "நீவருகிறாயா?", R.drawable.empty_image, R.raw.phrases_are_you_coming, "Phrases"));
+            addWord(new Word("Yes, I’m coming.", "ஆம், நான்வருகிறேன்.", R.drawable.empty_image, R.raw.phrases_yes_im_coming, "Phrases"));
+            addWord(new Word("I’m coming.", "நான்வருகிறேன்.", R.drawable.empty_image, R.raw.phrases_im_coming, "Phrases"));
+            addWord(new Word("Let’s go.", "செல்லலாம்.", R.drawable.empty_image, R.raw.phrases_lets_go, "Phrases"));
+            addWord(new Word("Come here.", "இங்கேவா.", R.drawable.empty_image, R.raw.phrases_come_here, "Phrases"));
         }
         db.close();
     }

@@ -76,18 +76,6 @@ public class LearnActivity extends AppCompatActivity {
 
         DatabaseHelper db = new DatabaseHelper(this);
 
-        /*
-        // Colors //
-        db.addWord(new Word("white", "வெள்ளை", R.drawable.color_white, R.raw.color_white, "Colors"));
-        db.addWord(new Word("gray", "சாம்பல்", R.drawable.color_gray, R.raw.color_gray, "Colors"));
-        db.addWord(new Word("black", "கருப்பு", R.drawable.color_black, R.raw.color_black, "Colors"));
-        db.addWord(new Word("red", "சிவப்பு", R.drawable.color_red, R.raw.color_red, "Colors"));
-        db.addWord(new Word("blue", "நீலமான", R.drawable.color_blue, R.raw.color_white, "Colors"));
-        db.addWord(new Word("yellow", "மஞ்சள்", R.drawable.color_yellow, R.raw.color_white, "Colors"));
-        db.addWord(new Word("green", "பச்சை", R.drawable.color_green, R.raw.color_green, "Colors"));
-        db.addWord(new Word("brown", "பழுப்பு", R.drawable.color_brown, R.raw.color_brown, "Colors"));
-        */
-
         final ArrayList<Word> words = db.getWords(category);
 
         // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The

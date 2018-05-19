@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,10 +17,10 @@ public class VocabularyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_words);
 
         // Find the View
-        TextView colors = (TextView) findViewById(R.id.colors);
-        TextView numbers = (TextView) findViewById(R.id.numbers);
-        TextView phrases = (TextView) findViewById(R.id.phrases);
-        TextView family = (TextView) findViewById(R.id.family);
+        CardView colors = (CardView) findViewById(R.id.CardView_colors);
+        CardView numbers = (CardView) findViewById(R.id.CardView_numbers);
+        CardView phrases = (CardView) findViewById(R.id.CardView_phrases);
+        CardView family = (CardView) findViewById(R.id.CardView_family);
 
         // Set a click listener on that View
         colors.setOnClickListener(new View.OnClickListener() {

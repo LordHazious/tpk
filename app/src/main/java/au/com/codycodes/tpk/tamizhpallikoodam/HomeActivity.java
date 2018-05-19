@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.ImageView;
+import android.support.v7.widget.CardView;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -46,7 +48,7 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         // Find the View that shows the colors category
-        ImageView vocabulary = (ImageView) findViewById(R.id.image_view_vocabulary);
+        CardView vocabulary = (CardView) findViewById(R.id.CardView_vocabulary);
 
         // Set a click listener on that View
         vocabulary.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +64,7 @@ public class HomeActivity extends AppCompatActivity
         });
 
         // Find the View that shows the colors category
-        ImageView game = (ImageView) findViewById(R.id.image_view_game);
+        CardView game = (CardView) findViewById(R.id.CardView_game);
 
         // Set a click listener on that View
         game.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +76,19 @@ public class HomeActivity extends AppCompatActivity
 
                 // Start the new activity
                 startActivity(gameIntent);
+            }
+        });
+
+        // Find the View that shows the company's website
+        CardView website = (CardView) findViewById(R.id.CardView_website);
+
+        // Set a click listener on that View
+        website.setOnClickListener(new View.OnClickListener() {
+            // The code in this method will be executed when the colors category is clicked on.
+            @Override
+            public void onClick(View view) {
+
+                ShowWebPage(view);
             }
         });
     }

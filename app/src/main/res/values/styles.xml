@@ -3,10 +3,11 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/tamil_red</item>
+        <item name="colorPrimary">@color/tpk_action_bar_tamizh_red</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <item name="android:fontFamily">@font/handlee</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -31,6 +32,7 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:fontFamily">@font/handlee</item>
     </style>
 
     <!-- Style for a menu items -->

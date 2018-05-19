@@ -1,100 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TableLayout
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@drawable/bg"
+    android:gravity="center"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    android:id="@+id/ll">
+    <LinearLayout
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="?android:attr/actionBarSize"
-            android:layout_weight="0.5"
-            android:weightSum="1">
+        <android.support.v7.widget.CardView
+            android:id="@+id/CardView_vocabulary"
+            android:layout_width="160dp"
+            android:layout_height="190dp"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
 
-            <RelativeLayout
-                android:layout_width="360dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/circle_shape_vocab"
+                    android:padding="10dp"
+                    android:src="@drawable/vocabulary" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="56dp"
-                    android:src="@drawable/topk_lets_learn_tamil" />
-            </RelativeLayout>
+                    android:layout_marginTop="10dp"
+                    android:text="@string/category_vocabulary"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textStyle="bold" />
 
-        </TableRow>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/lightgray" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:weightSum="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/details_vocabualry"
+                    android:textColor="@android:color/darker_gray" />
 
-            <RelativeLayout
-                android:layout_width="0dp"
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/CardView_game"
+            android:layout_width="160dp"
+            android:layout_height="190dp"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/image_view_vocabulary"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/circle_shape_game"
+                    android:padding="10dp"
+                    android:src="@drawable/game" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/tpk_options_vocabulary" />
-            </RelativeLayout>
+                    android:layout_marginTop="10dp"
+                    android:text="@string/category_game"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textStyle="bold" />
 
-            <RelativeLayout
-                android:layout_width="0dp"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/lightgray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/details_game"
+                    android:textColor="@android:color/darker_gray" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:clipToPadding="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/CardView_website"
+            android:layout_width="160dp"
+            android:layout_height="190dp"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/image_view_game"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/circle_shape_website"
+                    android:padding="10dp"
+                    android:src="@drawable/website" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/tpk_options_game" />
-            </RelativeLayout>
-        </TableRow>
+                    android:layout_marginTop="10dp"
+                    android:text="@string/category_website"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textStyle="bold" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:weightSum="1">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/lightgray" />
 
-            <RelativeLayout
-                android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/details_website"
+                    android:textColor="@android:color/darker_gray" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/CardView_about"
+            android:layout_width="160dp"
+            android:layout_height="190dp"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.5">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/circle_shape_about"
+                    android:padding="10dp"
+                    android:src="@drawable/about" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:onClick="ShowWebPage"
-                    android:src="@drawable/tpk_options_www" />
-            </RelativeLayout>
+                    android:layout_marginTop="10dp"
+                    android:text="@string/category_about"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textStyle="bold" />
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/lightgray" />
 
-                <ImageView
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/tpk_options_about" />
-            </RelativeLayout>
-        </TableRow>
-    </TableLayout>
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="@string/details_about"
+                    android:textColor="@android:color/darker_gray" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
 </LinearLayout>

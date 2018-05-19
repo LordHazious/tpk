@@ -69,6 +69,7 @@ public class LearnActivity extends AppCompatActivity {
         setContentView(R.layout.word_list);
 
         Intent myIntent = getIntent();
+        // String category = "Colors";
         String category = myIntent.getStringExtra("category");
 
         // Create and setup the {@link AudioManager} to request audio focus

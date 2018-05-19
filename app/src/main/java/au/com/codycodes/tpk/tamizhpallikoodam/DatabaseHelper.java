@@ -95,6 +95,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return words;
     }
 
+
+    // Options //
+    private String option1;
+    private String option2;
+    private String option3;
+    private String option4;
+
     public Quiz getQuiz(){
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -102,14 +109,18 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         if (question.moveToFirst()) {
             Cursor options = db.rawQuery("SELECT DISTINCT english " + "FROM words " + "WHERE id >= (abs(random()) % (SELECT max(id) FROM words)) AND category = ? AND id != ? ORDER BY english LIMIT 0,4", new String [] { question.getString(5), question.getString(0)});
 
-            options.moveToFirst();
-            String option1 = options.getString(0);
-            options.moveToNext();
-            String option2 = options.getString(0);
-            options.moveToNext();
-            String option3 = options.getString(0);
-            options.moveToLast();
-            String option4 = options.getString(0);
+            if(options != null && options.moveToFirst()) {
+                option1 = options.getString(0);
+                if(options.moveToNext()) {
+                    option2 = options.getString(0);
+                }
+                if(options.moveToNext()) {
+                    option3 = options.getString(0);
+                }
+                if(options.moveToLast()) {
+                    option4 = options.getString(0);
+                }
+            }
 
             Random r = new Random();
 

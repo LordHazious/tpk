@@ -55,15 +55,9 @@ public class QuestionActivity extends AppCompatActivity {
         });
 
         final ImageView play =  findViewById(R.id.play);
-        final Button audio = findViewById(R.id.audio);
         final MediaPlayer mp = MediaPlayer.create(this, quiz.getAudioResourceId());
 
         play.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mp.start();
-            }
-        });
-        audio.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mp.start();
             }

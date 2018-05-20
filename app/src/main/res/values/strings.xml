@@ -60,4 +60,29 @@
 
     <!-- Slogan for main menu-->
     <string name="title_gui_menu">Let\'s Learn Tamizh!</string>
+
+    <!-- about app title-->
+    <string name="title_about_app">About Tamizh Pallikoodam App</string>
+
+    <!-- about app text-->
+    <string name="text_about_app">Tamizh Pallikoodam (TPK) is a not for profit school run solely to provide Australians an opportunity to explore and experience the rich Tamil traditions, language, arts and culture. Our Tamil school is a great supporter of the Australian government’s multicultural agenda.
+
+The school has a unique leadership group drawn out of senior teachers in public and private schools around Melbourne, Victoria, who have designed a highly contextual curriculum that makes learning Tamil a fun activity.
+
+The curriculum sits fairly within the Victorian Essential Learning Standards (VELS) paradigm and hence the children are taught Tamil in the same way they are taught other subjects in their day schools. Children learn the language as well as the history and culture of Tamil by learning storytelling, drama and skit. Learning multiple languages has evidence base for enhancing the cognitive and intellectual capacity of the learner and it is hoped that the Pallikoodam will contribute to the enrichment of Australia’s future generations, intellectually, philosophically and emotionally leading to a well-rounded, compassionate, all-encompassing world citizen.
+
+Tamizh Pallikoodam is a not for profit school.</string>
+
+    <!-- about app text-->
+    <string name="text_about_app_2">The general idea is to have a mobile application as a tool to aid in the learning process for the students.
+
+Make learning the language interesting and fun. The use of specific applications like this could help the school as an organisation that embraces technology in teaching and learning, in turn getting a good will within the community.
+    </string>
+
+    <!-- about app text-->
+    <string name="text_about_app_3">This app has been developed by Digital Bliss team as part of their final assignment for COSC7362 Develop advanced mobile multi-touch applications course of study, RMIT university, 2018</string>
+
+    <!-- game submit button-->
+    <string name="button_submit">SUBMIT</string>
+
 </resources>

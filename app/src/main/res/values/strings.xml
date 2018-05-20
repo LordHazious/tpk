@@ -44,10 +44,10 @@
     <string name="details_vocabualry">Learn some Tamizh words</string>
 
     <!-- details for the numbers [CHAR LIMIT=20] -->
-    <string name="details_numbers">Learn basic Tamizh numbers</string>
+    <string name="details_numbers">Learn Tamizh numbers</string>
 
     <!-- details for the colors [CHAR LIMIT=20] -->
-    <string name="details_colors">Tamizh numbers and pronunciations</string>
+    <string name="details_colors">Colors in Tamizh language</string>
 
     <!-- details for the family members [CHAR LIMIT=20] -->
     <string name="details_family">Family members in Tamizh</string>
@@ -60,6 +60,9 @@
 
     <!-- Slogan for main menu-->
     <string name="title_gui_menu">Let\'s Learn Tamizh!</string>
+
+    <!-- Slogan for main menu-->
+    <string name="title_activity_question">Question</string>
 
     <!-- about app title-->
     <string name="title_about_app">About Tamizh Pallikoodam App</string>

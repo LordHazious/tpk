@@ -7,20 +7,20 @@
         <item
             android:id="@+id/nav_vocabulary"
             android:icon="@drawable/vocabulary"
-            android:title="Vocabulary" />
+            android:title="@string/category_vocabulary" />
         <item
             android:id="@+id/nav_game"
             android:icon="@drawable/game"
-            android:title="Game" />
+            android:title="@string/category_game" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/website"
-            android:title="Website"
+            android:title="@string/category_website"
             android:visible="false"/>
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/about"
-            android:title="About" android:visible="false"/>
+            android:title="@string/category_about" android:visible="false"/>
     </group>
 
     <item android:title="Information">
@@ -28,11 +28,11 @@
             <item
                 android:id="@+id/nav_website"
                 android:icon="@drawable/website"
-                android:title="Website" />
+                android:title="@string/category_website" />
             <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/about"
-                android:title="About" />
+                android:title="@string/category_about" />
         </menu>
     </item>
 

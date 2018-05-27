@@ -1,5 +1,6 @@
 package au.com.codycodes.tpk.tamizhpallikoodam;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -12,6 +13,8 @@ import android.widget.RadioButton;
 import android.media.MediaPlayer;
 
 public class QuestionActivity extends AppCompatActivity {
+
+    private String correct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +47,17 @@ public class QuestionActivity extends AppCompatActivity {
                 if(rg.getCheckedRadioButtonId() != -1) {
                     String selectedOption = ((RadioButton)findViewById(rg.getCheckedRadioButtonId())).getText().toString();
                     if (selectedOption.equals(quiz.getAnswer())) {
-                        Toast.makeText(getApplicationContext(), "Correct!", Toast.LENGTH_LONG).show();
+                        correct = "CORRECT";
                     } else {
-                        Toast.makeText(getApplicationContext(), "Incorrect!: " + quiz.getAnswer(), Toast.LENGTH_LONG).show();
+                        correct = "INCORRECT";
                     }
+
+                    // Create a new intent to open the {@link LearnActivity}
+                    Intent resultIntent = new Intent(QuestionActivity.this, ResultSplashActivity.class);
+                    resultIntent.putExtra("correct", correct);
+
+                    // Start the new activity
+                    startActivity(resultIntent);
                 }else{
                     Toast.makeText(getApplicationContext(), "Please make a selection", Toast.LENGTH_LONG).show();
                 }

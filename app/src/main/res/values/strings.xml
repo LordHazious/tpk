@@ -87,5 +87,6 @@ Make learning the language interesting and fun. The use of specific applications
 
     <!-- game submit button-->
     <string name="button_submit">SUBMIT</string>
+    <string name="title_activity_results_list">ResultsList</string>
 
 </resources>

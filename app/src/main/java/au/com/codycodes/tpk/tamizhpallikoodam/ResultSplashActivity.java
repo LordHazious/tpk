@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 public class ResultSplashActivity extends AppCompatActivity {
 
@@ -13,11 +16,28 @@ public class ResultSplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_result_splash);
 
         Intent myIntent = getIntent();
-        String correct = myIntent.getStringExtra("correct");
+        String score = myIntent.getStringExtra("score");
+        Log.e("SCORE", myIntent.getStringExtra("score"));
 
-        Toast.makeText(getApplicationContext(), "Answer: " + correct, Toast.LENGTH_LONG).show();
+        RatingBar bar = findViewById(R.id.ratingBar1);
+        TextView t = findViewById(R.id.textResult);
+
+        bar.setRating(Integer.valueOf(score));
+
+        switch (Integer.valueOf(score))
+        {
+            case 1:
+            case 2: t.setText("Oopsie! Better Luck Next Time!");
+                break;
+            case 3:
+            case 4:t.setText("Hmmmm.. Someone's been reading a lot of trivia");
+                break;
+            case 5:t.setText("Who are you? A trivia wizard???");
+                break;
+        }
 
         new Handler().postDelayed(new Runnable(){
             @Override
